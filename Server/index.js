@@ -25,7 +25,7 @@ const db = mysql.createConnection({
 
 // Route d'inscription
 app.post('/inscription', (req, res) => {
-    const sql = "INSERT INTO login (cin, nom, prenom, address, email, tel, username, password) VALUES (?)";
+    const sql = "INSERT INTO client (cin, nom, prenom, address, email, tel, login, password) VALUES (?,?,?,?,?,?,?,?)";
     bcrypt.hash(req.body.password.toString(), salt, (err, hash) => {
         if (err) return res.json({ Error: "Erreur lors du hachage du mot de passe" });
         const values = [
@@ -35,10 +35,10 @@ app.post('/inscription', (req, res) => {
             req.body.address,
             req.body.email,
             req.body.tel,
-            req.body.username,
+            req.body.login,
             hash
         ];
-        db.query(sql, [values], (err, result) => {
+        db.query(sql, values, (err, result) => {
             if (err) {
                 console.error("Erreur de base de données :", err);
                 return res.json({ Error: "Erreur lors de l'insertion dans la base de données" });
@@ -49,7 +49,7 @@ app.post('/inscription', (req, res) => {
 });
 // Route de login
 app.post('/login', (req, res) => {
-  const sql = 'SELECT * FROM login WHERE email = ?';
+  const sql = 'SELECT * FROM client WHERE email = ?';
   db.query(sql, [req.body.email], (err, data) => {
       if (err) return res.json({ Error: "Login error in server" });
       if (data.length > 0) {

@@ -8,10 +8,10 @@ function Inscription() {
     cin: '',
     nom: '',
     prenom: '',
+    address: '',
     email: '',
     tel: '',
-    address: '',
-    username: '',
+    login: '',
     password: ''
   });
   const navigate = useNavigate();
@@ -48,6 +48,10 @@ function Inscription() {
           <input type="text" name="prenom" onChange={e => setValues({ ...values, prenom: e.target.value })} className="form-control" />
         </div>
         <div className="form-group">
+          <label>Address</label>
+          <input type="text" name="address" onChange={e => setValues({ ...values, address: e.target.value })} className="form-control" />
+        </div>
+        <div className="form-group">
           <label>Email</label>
           <input type="email" name="email" onChange={e => setValues({ ...values, email: e.target.value })} className="form-control" />
         </div>
@@ -56,12 +60,8 @@ function Inscription() {
           <input type="tel" name="tel" onChange={e => setValues({ ...values, tel: e.target.value })} className="form-control" />
         </div>
         <div className="form-group">
-          <label>Address</label>
-          <input type="text" name="address" onChange={e => setValues({ ...values, address: e.target.value })} className="form-control" />
-        </div>
-        <div className="form-group">
-          <label>Username</label>
-          <input type="text" name="username" onChange={e => setValues({ ...values, username: e.target.value })} className="form-control" />
+          <label>Login</label>
+          <input type="text" name="login" onChange={e => setValues({ ...values, login: e.target.value })} className="form-control" />
         </div>
         <div className="form-group">
           <label>Password</label>
