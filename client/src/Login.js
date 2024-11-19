@@ -18,7 +18,7 @@ function Login() {
       .then((res) => {
         console.log(res);
         if (res.data.Status === "Success") {
-          navigate("/");
+          navigate("/addvoiture");
         } else {
           alert(res.data.Error);
         }
